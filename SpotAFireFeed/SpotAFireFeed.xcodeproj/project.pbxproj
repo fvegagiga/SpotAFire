@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		C65D553E28C74F3C0090D79F /* SpotLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D553D28C74F3C0090D79F /* SpotLoader.swift */; };
-		C672DE0C28C743310016704B /* SpotAFireFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C672DE0328C743300016704B /* SpotAFireFeed.framework */; };
 		C672DE1C28C7436A0016704B /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C672DE1B28C7436A0016704B /* Spot.swift */; };
+		C6D9DC1F28C75E9B00947472 /* SpotAFireFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C672DE0328C743300016704B /* SpotAFireFeed.framework */; };
+		C6D9DC2628C75EB800947472 /* SpotAFireFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C672DE0D28C743310016704B /* PBXContainerItemProxy */ = {
+		C6D9DC2028C75E9B00947472 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C672DDFA28C743300016704B /* Project object */;
 			proxyType = 1;
@@ -25,8 +26,9 @@
 /* Begin PBXFileReference section */
 		C65D553D28C74F3C0090D79F /* SpotLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotLoader.swift; sourceTree = "<group>"; };
 		C672DE0328C743300016704B /* SpotAFireFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotAFireFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C672DE0B28C743310016704B /* SpotAFireFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotAFireFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C672DE1B28C7436A0016704B /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
+		C6D9DC1B28C75E9B00947472 /* SpotAFireFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotAFireFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotAFireFeedTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,11 +39,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C672DE0828C743310016704B /* Frameworks */ = {
+		C6D9DC1828C75E9B00947472 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C672DE0C28C743310016704B /* SpotAFireFeed.framework in Frameworks */,
+				C6D9DC1F28C75E9B00947472 /* SpotAFireFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				C672DE0528C743300016704B /* SpotAFireFeed */,
+				C6D9DC1C28C75E9B00947472 /* SpotAFireFeedTests */,
 				C672DE0428C743300016704B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				C672DE0328C743300016704B /* SpotAFireFeed.framework */,
-				C672DE0B28C743310016704B /* SpotAFireFeedTests.xctest */,
+				C6D9DC1B28C75E9B00947472 /* SpotAFireFeedTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,6 +83,14 @@
 				C65D553F28C752F10090D79F /* Feed Feature */,
 			);
 			path = SpotAFireFeed;
+			sourceTree = "<group>";
+		};
+		C6D9DC1C28C75E9B00947472 /* SpotAFireFeedTests */ = {
+			isa = PBXGroup;
+			children = (
+				C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */,
+			);
+			path = SpotAFireFeedTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -113,22 +124,22 @@
 			productReference = C672DE0328C743300016704B /* SpotAFireFeed.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		C672DE0A28C743310016704B /* SpotAFireFeedTests */ = {
+		C6D9DC1A28C75E9B00947472 /* SpotAFireFeedTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C672DE1828C743310016704B /* Build configuration list for PBXNativeTarget "SpotAFireFeedTests" */;
+			buildConfigurationList = C6D9DC2228C75E9B00947472 /* Build configuration list for PBXNativeTarget "SpotAFireFeedTests" */;
 			buildPhases = (
-				C672DE0728C743310016704B /* Sources */,
-				C672DE0828C743310016704B /* Frameworks */,
-				C672DE0928C743310016704B /* Resources */,
+				C6D9DC1728C75E9B00947472 /* Sources */,
+				C6D9DC1828C75E9B00947472 /* Frameworks */,
+				C6D9DC1928C75E9B00947472 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C672DE0E28C743310016704B /* PBXTargetDependency */,
+				C6D9DC2128C75E9B00947472 /* PBXTargetDependency */,
 			);
 			name = SpotAFireFeedTests;
 			productName = SpotAFireFeedTests;
-			productReference = C672DE0B28C743310016704B /* SpotAFireFeedTests.xctest */;
+			productReference = C6D9DC1B28C75E9B00947472 /* SpotAFireFeedTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -145,7 +156,7 @@
 						CreatedOnToolsVersion = 13.2.1;
 						LastSwiftMigration = 1320;
 					};
-					C672DE0A28C743310016704B = {
+					C6D9DC1A28C75E9B00947472 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -164,7 +175,7 @@
 			projectRoot = "";
 			targets = (
 				C672DE0228C743300016704B /* SpotAFireFeed */,
-				C672DE0A28C743310016704B /* SpotAFireFeedTests */,
+				C6D9DC1A28C75E9B00947472 /* SpotAFireFeedTests */,
 			);
 		};
 /* End PBXProject section */
@@ -177,7 +188,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C672DE0928C743310016704B /* Resources */ = {
+		C6D9DC1928C75E9B00947472 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -196,20 +207,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C672DE0728C743310016704B /* Sources */ = {
+		C6D9DC1728C75E9B00947472 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D9DC2628C75EB800947472 /* SpotAFireFeedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C672DE0E28C743310016704B /* PBXTargetDependency */ = {
+		C6D9DC2128C75E9B00947472 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C672DE0228C743300016704B /* SpotAFireFeed */;
-			targetProxy = C672DE0D28C743310016704B /* PBXContainerItemProxy */;
+			targetProxy = C6D9DC2028C75E9B00947472 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -394,10 +406,9 @@
 			};
 			name = Release;
 		};
-		C672DE1928C743310016704B /* Debug */ = {
+		C6D9DC2328C75E9B00947472 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
@@ -410,10 +421,9 @@
 			};
 			name = Debug;
 		};
-		C672DE1A28C743310016704B /* Release */ = {
+		C6D9DC2428C75E9B00947472 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5MPC35WK7F;
@@ -447,11 +457,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C672DE1828C743310016704B /* Build configuration list for PBXNativeTarget "SpotAFireFeedTests" */ = {
+		C6D9DC2228C75E9B00947472 /* Build configuration list for PBXNativeTarget "SpotAFireFeedTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C672DE1928C743310016704B /* Debug */,
-				C672DE1A28C743310016704B /* Release */,
+				C6D9DC2328C75E9B00947472 /* Debug */,
+				C6D9DC2428C75E9B00947472 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
