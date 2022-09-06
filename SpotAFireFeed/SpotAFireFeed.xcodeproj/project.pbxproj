@@ -48,6 +48,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C65D553F28C752F10090D79F /* Feed Feature */ = {
+			isa = PBXGroup;
+			children = (
+				C672DE1B28C7436A0016704B /* Spot.swift */,
+				C65D553D28C74F3C0090D79F /* SpotLoader.swift */,
+			);
+			path = "Feed Feature";
+			sourceTree = "<group>";
+		};
 		C672DDF928C743300016704B = {
 			isa = PBXGroup;
 			children = (
@@ -68,8 +77,7 @@
 		C672DE0528C743300016704B /* SpotAFireFeed */ = {
 			isa = PBXGroup;
 			children = (
-				C672DE1B28C7436A0016704B /* Spot.swift */,
-				C65D553D28C74F3C0090D79F /* SpotLoader.swift */,
+				C65D553F28C752F10090D79F /* Feed Feature */,
 			);
 			path = SpotAFireFeed;
 			sourceTree = "<group>";
