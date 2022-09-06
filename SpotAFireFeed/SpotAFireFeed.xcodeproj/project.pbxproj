@@ -11,6 +11,7 @@
 		C672DE1C28C7436A0016704B /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C672DE1B28C7436A0016704B /* Spot.swift */; };
 		C6D9DC1F28C75E9B00947472 /* SpotAFireFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C672DE0328C743300016704B /* SpotAFireFeed.framework */; };
 		C6D9DC2628C75EB800947472 /* SpotAFireFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */; };
+		C6D9DC2928C7ACF400947472 /* RemoteSpotLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,7 @@
 		C672DE1B28C7436A0016704B /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
 		C6D9DC1B28C75E9B00947472 /* SpotAFireFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotAFireFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotAFireFeedTests.swift; sourceTree = "<group>"; };
+		C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSpotLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				C65D553F28C752F10090D79F /* Feed Feature */,
+				C6D9DC2728C7ACD000947472 /* Feed API */,
 			);
 			path = SpotAFireFeed;
 			sourceTree = "<group>";
@@ -91,6 +94,14 @@
 				C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */,
 			);
 			path = SpotAFireFeedTests;
+			sourceTree = "<group>";
+		};
+		C6D9DC2728C7ACD000947472 /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */,
+			);
+			path = "Feed API";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D9DC2928C7ACF400947472 /* RemoteSpotLoader.swift in Sources */,
 				C65D553E28C74F3C0090D79F /* SpotLoader.swift in Sources */,
 				C672DE1C28C7436A0016704B /* Spot.swift in Sources */,
 			);

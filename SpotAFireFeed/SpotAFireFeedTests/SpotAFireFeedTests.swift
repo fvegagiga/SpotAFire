@@ -1,24 +1,7 @@
 // Copyright @ 2022 Fernando Vega. All rights reserved.
 
 import XCTest
-
-class RemoteSpotLoader {
-    let client: HTTPClient
-    let url: URL
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-    
-    func load() {
-        client.get(from: url)
-    }
-}
-
-protocol HTTPClient {
-    func get(from url: URL)
-}
+import SpotAFireFeed
 
 class RemoteSpotLoaderTests: XCTestCase {
 
