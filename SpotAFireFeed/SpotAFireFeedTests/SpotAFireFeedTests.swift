@@ -29,7 +29,8 @@ class RemoteSpotLoaderTests: XCTestCase {
     }
     
     func test_load_requestDataFromURL() {
-        let (sut, client) = makeSUT()
+        let url = URL(string: "https://a-given-url.com")!
+        let (sut, client) = makeSUT(url: url)
         
         sut.load()
         
