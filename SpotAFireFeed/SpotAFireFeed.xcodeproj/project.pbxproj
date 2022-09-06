@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C65D553E28C74F3C0090D79F /* SpotLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65D553D28C74F3C0090D79F /* SpotLoader.swift */; };
 		C672DE0C28C743310016704B /* SpotAFireFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C672DE0328C743300016704B /* SpotAFireFeed.framework */; };
 		C672DE1C28C7436A0016704B /* Spot.swift in Sources */ = {isa = PBXBuildFile; fileRef = C672DE1B28C7436A0016704B /* Spot.swift */; };
 /* End PBXBuildFile section */
@@ -22,6 +23,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C65D553D28C74F3C0090D79F /* SpotLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotLoader.swift; sourceTree = "<group>"; };
 		C672DE0328C743300016704B /* SpotAFireFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SpotAFireFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C672DE0B28C743310016704B /* SpotAFireFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotAFireFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C672DE1B28C7436A0016704B /* Spot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spot.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				C672DE1B28C7436A0016704B /* Spot.swift */,
+				C65D553D28C74F3C0090D79F /* SpotLoader.swift */,
 			);
 			path = SpotAFireFeed;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C65D553E28C74F3C0090D79F /* SpotLoader.swift in Sources */,
 				C672DE1C28C7436A0016704B /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
