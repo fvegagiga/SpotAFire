@@ -15,7 +15,7 @@ class RemoteSpotLoaderTests: XCTestCase {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load()
+        sut.load() { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url])
     }
@@ -24,10 +24,22 @@ class RemoteSpotLoaderTests: XCTestCase {
         let url = URL(string: "https://a-given-url.com")!
         let (sut, client) = makeSUT(url: url)
         
-        sut.load()
-        sut.load()
+        sut.load() { _ in }
+        sut.load() { _ in }
         
         XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
+    func test_load_deliversErrorOnHTTPClientError() {
+        let (sut, client) = makeSUT()
+        
+        var capturedError = [RemoteSpotLoader.Error]()
+        sut.load { capturedError.append($0) }
+        
+        let clientError = NSError(domain: "Test", code: 0)
+        client.complete(with: clientError)
+
+        XCTAssertEqual(capturedError, [.connectivity])
     }
     
     // MARK: - Helpers
@@ -39,10 +51,18 @@ class RemoteSpotLoaderTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var requestedURLs: [URL] = []
+        var messages = [(url: URL, completions: (Error) -> Void)]()
         
-        func get(from url: URL) {
-            requestedURLs.append(url)
+        var requestedURLs: [URL] {
+            messages.map { $0.url }
+        }
+        
+        func get(from url: URL, completion: @escaping (Error) -> Void) {
+            messages.append((url, completion))
+        }
+        
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completions(error)
         }
     }
 }
