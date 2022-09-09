@@ -46,7 +46,8 @@ class RemoteSpotLoaderTests: XCTestCase {
         
         samples.forEach { index, statusCode in
             expect(sut, completeWith: .failure(.invalidData), when: {
-                client.complete(withStatusCode: statusCode, at: index)
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: statusCode, data: json, at: index)
             })
         }
     }
@@ -142,7 +143,7 @@ class RemoteSpotLoaderTests: XCTestCase {
             messages[index].completions(.failure(error))
         }
         
-        func complete(withStatusCode code: Int, data: Data = Data(), at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
             let response = HTTPURLResponse(
                 url: URL(string: "https://any-url.com")!,
                 statusCode: code,

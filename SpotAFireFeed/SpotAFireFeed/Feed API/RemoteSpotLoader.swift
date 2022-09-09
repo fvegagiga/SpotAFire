@@ -27,8 +27,9 @@ public final class RemoteSpotLoader {
     public func load(completion: @escaping (Result) -> Void) {
         client.get(from: url) { result in
             switch result {
-            case let .success((data, _)):
-                if let spots = try? JSONDecoder().decode([Spot].self, from: data) {
+            case let .success((data, response)):
+                if response.statusCode == 200,
+                   let spots = try? JSONDecoder().decode([Spot].self, from: data) {
                     completion(.success(spots))
                 } else {
                     completion(.failure(.invalidData))
