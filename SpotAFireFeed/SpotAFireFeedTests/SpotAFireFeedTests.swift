@@ -68,12 +68,12 @@ class RemoteSpotLoaderTests: XCTestCase {
     }
     
     private func expect(_ sut: RemoteSpotLoader, completeWithError error: RemoteSpotLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
-        var capturedError = [RemoteSpotLoader.Error]()
-        sut.load { capturedError.append($0) }
+        var capturedResult = [RemoteSpotLoader.Result]()
+        sut.load { capturedResult.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedError, [error], file: file, line: line)
+        XCTAssertEqual(capturedResult, [.failure(error)], file: file, line: line)
     }
     
     private class HTTPClientSpy: HTTPClient {

@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Spot {
+public struct Spot: Equatable {
     let id: String
     let author: String
     let description: String?
