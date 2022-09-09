@@ -28,9 +28,8 @@ public final class RemoteSpotLoader {
         client.get(from: url) { result in
             switch result {
             case let .success((data, response)):
-                if response.statusCode == 200,
-                   let spots = try? JSONDecoder().decode([SpotItem].self, from: data) {
-                    completion(.success(spots.map { $0.spot }))
+                if let spots = try? SpotMapper.map(data, response) {
+                    completion(.success(spots))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -41,14 +40,25 @@ public final class RemoteSpotLoader {
     }
 }
 
-private struct SpotItem: Decodable {
-    let id: String
-    let username: String
-    let description: String?
-    let likes: Int
-    let thumb: URL
+private class SpotMapper {
+    private struct SpotItem: Decodable {
+        let id: String
+        let username: String
+        let description: String?
+        let likes: Int
+        let thumb: URL
 
-    var spot: Spot {
-        Spot(id: id, author: username, description: description, likes: likes, image: thumb)
+        var spot: Spot {
+            Spot(id: id, author: username, description: description, likes: likes, image: thumb)
+        }
+    }
+
+    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [Spot] {
+        guard response.statusCode == 200 else {
+            throw RemoteSpotLoader.Error.invalidData
+        }
+        
+        let root = try JSONDecoder().decode([SpotItem].self, from: data)
+        return root.map { $0.spot }
     }
 }
