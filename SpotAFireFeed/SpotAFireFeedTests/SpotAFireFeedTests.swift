@@ -33,7 +33,7 @@ class RemoteSpotLoaderTests: XCTestCase {
     func test_load_deliversErrorOnHTTPClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, completeWithError: .connectivity, when: {
+        expect(sut, completeWith: .failure(.connectivity), when: {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         })
@@ -43,8 +43,9 @@ class RemoteSpotLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         
         let samples = [199, 201, 300, 400, 500].enumerated()
+        
         samples.forEach { index, statusCode in
-            expect(sut, completeWithError: .invalidData, when: {
+            expect(sut, completeWith: .failure(.invalidData), when: {
                 client.complete(withStatusCode: statusCode, at: index)
             })
         }
@@ -53,7 +54,7 @@ class RemoteSpotLoaderTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, completeWithError: .invalidData, when: {
+        expect(sut, completeWith: .failure(.invalidData), when: {
             let invalidJSON = Data("invalid JSON".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
@@ -79,13 +80,13 @@ class RemoteSpotLoaderTests: XCTestCase {
         return (sut, client)
     }
     
-    private func expect(_ sut: RemoteSpotLoader, completeWithError error: RemoteSpotLoader.Error, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    private func expect(_ sut: RemoteSpotLoader, completeWith result: RemoteSpotLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
         var capturedResult = [RemoteSpotLoader.Result]()
         sut.load { capturedResult.append($0) }
         
         action()
         
-        XCTAssertEqual(capturedResult, [.failure(error)], file: file, line: line)
+        XCTAssertEqual(capturedResult, [result], file: file, line: line)
     }
     
     private class HTTPClientSpy: HTTPClient {
