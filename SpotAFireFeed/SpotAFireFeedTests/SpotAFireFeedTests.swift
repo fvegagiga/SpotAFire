@@ -72,6 +72,44 @@ class RemoteSpotLoaderTests: XCTestCase {
         XCTAssertEqual(capturedResult, [.success([])])
     }
     
+    func test_load_deliversSpotItemsOn200HTTPResponseWithValidJSONList() {
+        let (sut, client) = makeSUT()
+
+        let spot1 = Spot(id: UUID().uuidString,
+                         author: "an author",
+                         description: nil,
+                         likes: 1,
+                         image: URL(string: "https://a-url.com")!)
+        
+        let spot1JSON: [String : Any] = [
+            "id": spot1.id,
+            "username": spot1.author,
+            "likes": spot1.likes,
+            "thumb": spot1.image.absoluteString
+        ]
+
+        let spot2 = Spot(id: UUID().uuidString,
+                         author: "another author",
+                         description: "a description",
+                         likes: 2,
+                         image: URL(string: "https://another-url.com")!)
+        
+        let spot2JSON: [String : Any] = [
+            "id": spot2.id,
+            "username": spot2.author,
+            "description": spot2.description!,
+            "likes": spot2.likes,
+            "thumb": spot2.image.absoluteString
+        ]
+        
+        let spotsJSON = [spot1JSON, spot2JSON]
+        
+        expect(sut, completeWith: .success([spot1, spot2]), when: {
+            let json = try! JSONSerialization.data(withJSONObject: spotsJSON)
+            client.complete(withStatusCode: 200, data: json)
+        })
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (RemoteSpotLoader, HTTPClientSpy) {

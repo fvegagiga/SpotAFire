@@ -28,8 +28,8 @@ public final class RemoteSpotLoader {
         client.get(from: url) { result in
             switch result {
             case let .success((data, _)):
-                if let _ = try? JSONSerialization.jsonObject(with: data) {
-                    completion(.success([]))
+                if let spots = try? JSONDecoder().decode([Spot].self, from: data) {
+                    completion(.success(spots))
                 } else {
                     completion(.failure(.invalidData))
                 }
