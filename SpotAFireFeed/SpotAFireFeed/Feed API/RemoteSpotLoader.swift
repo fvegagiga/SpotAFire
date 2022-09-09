@@ -29,8 +29,8 @@ public final class RemoteSpotLoader {
             switch result {
             case let .success((data, response)):
                 if response.statusCode == 200,
-                   let spots = try? JSONDecoder().decode([Spot].self, from: data) {
-                    completion(.success(spots))
+                   let spots = try? JSONDecoder().decode([SpotItem].self, from: data) {
+                    completion(.success(spots.map { $0.spot }))
                 } else {
                     completion(.failure(.invalidData))
                 }
@@ -38,5 +38,17 @@ public final class RemoteSpotLoader {
                 completion(.failure(.connectivity))
             }
         }
+    }
+}
+
+private struct SpotItem: Decodable {
+    let id: String
+    let username: String
+    let description: String?
+    let likes: Int
+    let thumb: URL
+
+    var spot: Spot {
+        Spot(id: id, author: username, description: description, likes: likes, image: thumb)
     }
 }

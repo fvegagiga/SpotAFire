@@ -17,13 +17,3 @@ public struct Spot: Equatable {
         self.image = image
     }
 }
-
-extension Spot: Decodable {
-    private enum CodingKeys: String, CodingKey {
-        case id
-        case author = "username"
-        case description
-        case likes
-        case image = "thumb"
-    }
-}
