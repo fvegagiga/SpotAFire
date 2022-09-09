@@ -75,37 +75,20 @@ class RemoteSpotLoaderTests: XCTestCase {
     func test_load_deliversSpotItemsOn200HTTPResponseWithValidJSONList() {
         let (sut, client) = makeSUT()
 
-        let spot1 = Spot(id: UUID().uuidString,
-                         author: "an author",
-                         description: nil,
-                         likes: 1,
-                         image: URL(string: "https://a-url.com")!)
+        let spot1 = makeItem(id: UUID().uuidString,
+                             author: "an author",
+                             description: nil,
+                             likes: 1,
+                             image: URL(string: "https://a-url.com")!)
         
-        let spot1JSON: [String : Any] = [
-            "id": spot1.id,
-            "username": spot1.author,
-            "likes": spot1.likes,
-            "thumb": spot1.image.absoluteString
-        ]
-
-        let spot2 = Spot(id: UUID().uuidString,
-                         author: "another author",
-                         description: "a description",
-                         likes: 2,
-                         image: URL(string: "https://another-url.com")!)
+        let spot2 = makeItem(id: UUID().uuidString,
+                             author: "another author",
+                             description: "a description",
+                             likes: 2,
+                             image: URL(string: "https://another-url.com")!)
         
-        let spot2JSON: [String : Any] = [
-            "id": spot2.id,
-            "username": spot2.author,
-            "description": spot2.description!,
-            "likes": spot2.likes,
-            "thumb": spot2.image.absoluteString
-        ]
-        
-        let spotsJSON = [spot1JSON, spot2JSON]
-        
-        expect(sut, completeWith: .success([spot1, spot2]), when: {
-            let json = try! JSONSerialization.data(withJSONObject: spotsJSON)
+        expect(sut, completeWith: .success([spot1.model, spot2.model]), when: {
+            let json = makeItemsJSON([spot1.json, spot2.json])
             client.complete(withStatusCode: 200, data: json)
         })
     }
@@ -116,6 +99,23 @@ class RemoteSpotLoaderTests: XCTestCase {
         let client = HTTPClientSpy()
         let sut = RemoteSpotLoader(url: url, client: client)
         return (sut, client)
+    }
+    
+    private func makeItem(id: String, author: String, description: String? = nil, likes: Int, image: URL) -> (model: Spot, json: [String: Any]) {
+        let item = Spot(id: id, author: author, description: description, likes: likes, image: image)
+        let json = [
+            "id": id,
+            "username": author,
+            "description": description as Any,
+            "likes": likes,
+            "thumb": image.absoluteString
+        ].compactMapValues { $0 }
+        
+        return (item, json)
+    }
+    
+    private func makeItemsJSON(_ spotsJSON: [[String: Any]]) -> Data {
+        return try! JSONSerialization.data(withJSONObject: spotsJSON)
     }
     
     private func expect(_ sut: RemoteSpotLoader, completeWith result: RemoteSpotLoader.Result, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
