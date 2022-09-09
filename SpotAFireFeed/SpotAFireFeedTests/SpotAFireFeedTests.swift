@@ -59,6 +59,18 @@ class RemoteSpotLoaderTests: XCTestCase {
         })
     }
     
+    func test_load_deliversNoSpotsOn200HTTPResponseWithEmptyJSONList() {
+        let (sut, client) = makeSUT()
+        
+        var capturedResult = [RemoteSpotLoader.Result]()
+        sut.load { capturedResult.append($0) }
+        
+        let emptyListJSON = Data("[]".utf8)
+        client.complete(withStatusCode: 200, data: emptyListJSON)
+
+        XCTAssertEqual(capturedResult, [.success([])])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (RemoteSpotLoader, HTTPClientSpy) {
