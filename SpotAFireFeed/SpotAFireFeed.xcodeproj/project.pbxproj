@@ -95,7 +95,7 @@
 		C6D9DC1C28C75E9B00947472 /* SpotAFireFeedTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */,
+				C6D9DC2E28CF107B00947472 /* Feed API */,
 			);
 			path = SpotAFireFeedTests;
 			sourceTree = "<group>";
@@ -106,6 +106,14 @@
 				C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */,
 				C6D9DC2A28CF087500947472 /* HTTPClient.swift */,
 				C6D9DC2C28CF08A500947472 /* SpotMapper.swift */,
+			);
+			path = "Feed API";
+			sourceTree = "<group>";
+		};
+		C6D9DC2E28CF107B00947472 /* Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
