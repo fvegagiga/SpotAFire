@@ -16,13 +16,14 @@ class SpotMapper {
     }
     
     static var OK_200: Int { return 200 }
-
-    static func map(_ data: Data, _ response: HTTPURLResponse) throws -> [Spot] {
-        guard response.statusCode == OK_200 else {
-            throw RemoteSpotLoader.Error.invalidData
+    
+    static func map(_ data: Data, _ response: HTTPURLResponse) -> RemoteSpotLoader.Result {
+        guard response.statusCode == OK_200,
+              let root = try? JSONDecoder().decode([SpotItem].self, from: data) else {
+            return .failure(.invalidData)
         }
-        
-        let root = try JSONDecoder().decode([SpotItem].self, from: data)
-        return root.map { $0.spot }
+
+        let spots = root.map { $0.spot }
+        return .success(spots)
     }
 }
