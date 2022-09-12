@@ -2,7 +2,7 @@
 
 import Foundation
 
-protocol SpotLoader {
+public protocol SpotLoader {
     typealias Result = Swift.Result<[Spot], Error>
     
     func load(completion: @escaping (Result) -> Void)

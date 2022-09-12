@@ -2,7 +2,7 @@
 
 import Foundation
 
-public final class RemoteSpotLoader {
+public final class RemoteSpotLoader: SpotLoader {
     let url: URL
     let client: HTTPClient
     
@@ -11,7 +11,7 @@ public final class RemoteSpotLoader {
         case invalidData
     }
     
-    public typealias Result = Swift.Result<[Spot], Error>
+    public typealias Result = SpotLoader.Result
     
     public init(url: URL, client: HTTPClient) {
         self.url = url
@@ -26,7 +26,7 @@ public final class RemoteSpotLoader {
             case let .success((data, response)):
                 completion(SpotMapper.map(data, response))
             case .failure:
-                completion(.failure(.connectivity))
+                completion(.failure(Error.connectivity))
             }
         }
     }
