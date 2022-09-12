@@ -12,6 +12,7 @@
 		C6D9DC1F28C75E9B00947472 /* SpotAFireFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C672DE0328C743300016704B /* SpotAFireFeed.framework */; };
 		C6D9DC2628C75EB800947472 /* SpotAFireFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */; };
 		C6D9DC2928C7ACF400947472 /* RemoteSpotLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */; };
+		C6D9DC2B28CF087500947472 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D9DC2A28CF087500947472 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		C6D9DC1B28C75E9B00947472 /* SpotAFireFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpotAFireFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6D9DC2528C75EB800947472 /* SpotAFireFeedTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotAFireFeedTests.swift; sourceTree = "<group>"; };
 		C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteSpotLoader.swift; sourceTree = "<group>"; };
+		C6D9DC2A28CF087500947472 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				C6D9DC2828C7ACF400947472 /* RemoteSpotLoader.swift */,
+				C6D9DC2A28CF087500947472 /* HTTPClient.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 			files = (
 				C6D9DC2928C7ACF400947472 /* RemoteSpotLoader.swift in Sources */,
 				C65D553E28C74F3C0090D79F /* SpotLoader.swift in Sources */,
+				C6D9DC2B28CF087500947472 /* HTTPClient.swift in Sources */,
 				C672DE1C28C7436A0016704B /* Spot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
