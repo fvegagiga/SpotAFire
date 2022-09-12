@@ -33,7 +33,7 @@ class RemoteSpotLoaderTests: XCTestCase {
     func test_load_deliversErrorOnHTTPClientError() {
         let (sut, client) = makeSUT()
         
-        expect(sut, completeWith: .failure(RemoteSpotLoader.Error.connectivity), when: {
+        expect(sut, completeWith: failure(.connectivity), when: {
             let clientError = NSError(domain: "Test", code: 0)
             client.complete(with: clientError)
         })
@@ -55,7 +55,7 @@ class RemoteSpotLoaderTests: XCTestCase {
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
         let (sut, client) = makeSUT()
         
-        expect(sut, completeWith: .failure(RemoteSpotLoader.Error.invalidData), when: {
+        expect(sut, completeWith: failure(.invalidData), when: {
             let invalidJSON = Data("invalid JSON".utf8)
             client.complete(withStatusCode: 200, data: invalidJSON)
         })
@@ -119,6 +119,10 @@ class RemoteSpotLoaderTests: XCTestCase {
         addTeardownBlock { [weak instance] in
             XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
         }
+    }
+    
+    private func failure(_ error: RemoteSpotLoader.Error) -> RemoteSpotLoader.Result {
+        .failure(error)
     }
     
     private func makeItem(id: String, author: String, description: String? = nil, likes: Int, image: URL) -> (model: Spot, json: [String: Any]) {
